@@ -1,0 +1,22 @@
+{
+  "name": "univers",
+  "version": "1.0.1",
+  "description": "`npm install --save universe`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/universeJS2020/universe.git"
+  },
+  "keywords": [
+    "univers"
+  ],
+  "author": "Stan Adrian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/universeJS2020/universe/issues"
+  },
+  "homepage": "https://github.com/universeJS2020/universe#readme"
+}
