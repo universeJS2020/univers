@@ -8,11 +8,10 @@ ___
 
 ___
 
-<!-- Blockquote -->
-> CreateElement: bool
-> CreateElements: bool
-> SamePosition: bool
-> LastPosition: bool
+* CreateElement: bool
+* CreateElements: bool
+* SamePosition: bool
+* LastPosition: bool
 Same: bool
 ShowPassword: bool
 PositionBody: bool
