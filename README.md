@@ -1,3 +1,3 @@
 # Installation
 
-`npm install --save universe`
+`npm install --save univers`
