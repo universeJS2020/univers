@@ -1,6 +1,6 @@
 {
   "name": "univers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "`npm install --save universe`",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/universeJS2020/universe.git"
   },
   "keywords": [
-    "universe"
+    "univers"
   ],
   "author": "Stan Adrian",
   "license": "ISC",
