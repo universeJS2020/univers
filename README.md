@@ -2,13 +2,16 @@
 
 `npm install --save univers`
 
-Examples:
+# Help & examples
 
 ```javascript
 function test() {
 
 }
 ```
+
+# Commands
+
 **Functions**
 * CreateElements: bool
 * ShowPassword: bool
