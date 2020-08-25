@@ -1,40 +1,8 @@
 let page = [];
 
 function univers(options) {
+    let ChooseElement;
     
-    //DOM creation
-    function createElem() {
-        page[page.length] = document.createElement(options.ElementType);
-
-        if(options.Class)
-            page[page.length-1].setAttribute(`class`, `${options.Class}`);
-        if(options.Id)
-            page[page.length-1].setAttribute(`id`, `${options.Id}`);
-        if(options.Name)
-            page[page.length-1].setAttribute(`name`, `${options.Name}`);
-        if(options.Type)
-            page[page.length-1].setAttribute(`type`, `${options.Type}`);
-        if(options.Href)
-            page[page.length-1].setAttribute(`href`, `${options.Href}`);
-        if(options.Source)
-            page[page.length-1].setAttribute(`src`, `${options.Source}`);
-        if(options.Placeholder)
-            page[page.length-1].setAttribute(`placeholder`, `${options.Placeholder}`);
-
-        if(options.Text) {
-            const text = document.createTextNode(`${options.Text}`);
-            page[page.length-1].appendChild(text);
-        } else {
-            const text = document.createTextNode(``);
-            page[page.length-1].appendChild(text);
-        }
-
-        if(options.PositionBody)
-            document.body.appendChild(page[page.length-1]);
-        else
-            document.querySelector(`.${options.Position}`).appendChild(page[page.length-1]);
-    }
-
     //Add the same class/id/name for every element in the DOM
     function theSame() {
         if(options.TheSame === `class`)
@@ -71,6 +39,17 @@ function univers(options) {
             });
         });
     }
+
+    //More classes
+    function MoreClasses(elements) {
+        const MoreClasses = options.MoreClasses.split(" ");
+        MoreClasses.forEach( el => {
+            if(parseInt(el) || parseInt(el) === 0)
+                ChooseElement = parseInt(el);
+            else
+                elements[ChooseElement].classList.add(`${el}`);
+        });
+    }
     
     //Multiple DOM Creation
     function createElements() {
@@ -101,10 +80,41 @@ function univers(options) {
             }
             if(options.NameAddSelect) {
                 const NameAddSelect = options.NameAddSelect.split(" ");
-                for(let i=0;i<elements.length;i+=2) {
-                    elements[i].setAttribute(`name`, `${NameAddSelect[i+1]}`);
+                for(let i=0;i<elements.length;i++) {
+                    if(NameAddSelect[i] !== 'skip')
+                        elements[i].setAttribute(`name`, `${NameAddSelect[i]}`);
                 }
-            } // href, source, type, placeholder
+            }
+            if(options.HrefAddSelect) {
+                const HrefAddSelect = options.HrefAddSelect.split(" ");
+                for(let i=0;i<elements.length;i++) {
+                    if(HrefAddSelect[i] !== 'skip') 
+                        elements[i].setAttribute(`href`, `${HrefAddSelect[i]}`);
+                }
+            }
+            if(options.SourceAddSelect) {
+                const SourceAddSelect = options.SourceAddSelect.split(" ");
+                for(let i=0;i<elements.length;i++) {
+                    if(SourceAddSelect[i] !== 'skip')
+                        elements[i].setAttribute(`src`, `${SourceAddSelect[i]}`);
+                }
+            }
+            if(options.TypeAddSelect) {
+                const TypeAddSelect = options.TypeAddSelect.split(" ");
+                for(let i=0;i<elements.length;i++) {
+                    if(TypeAddSelect[i] !== 'skip') {
+                        elements[i].setAttribute(`type`, `${TypeAddSelect[i]}`);
+                    }
+                }
+            }
+            if(options.PlaceholderAddSelect) {
+                const PlaceholderAddSelect = options.PlaceholderAddSelect.split(" ");
+                for(let i=0;i<elements.length;i++) {
+                    if(PlaceholderAddSelect[i] !== 'skip') {
+                        elements[i].setAttribute(`placeholder`, `${PlaceholderAddSelect[i]}`);
+                    }
+                }
+            }
 
         //Set common attributes
         if(options.CommonClass || options.CommonId || options.CommonName) {
@@ -159,10 +169,11 @@ function univers(options) {
                     document.querySelector(`.${Positions[i]}`).appendChild(elements[i]);
                 }
             }
+        
+        //MoreClasses call
+        if(options.MoreClasses)
+            MoreClasses(elements);
     }
-
-    if(options.CreateElement)
-        createElem();
 
     if(options.CreateElements)
         createElements();
@@ -189,6 +200,7 @@ univers({
     Same: bool,
     ShowPassword: bool,
     PositionBody: bool,
+    MoreClasses: string,
     ElementType: string,
     Class: string,
     Id: string,
@@ -210,4 +222,8 @@ univers({
     ClassAddSelect: string,
     IdAddSelect: string,
     NameAddSelect: string,
+    HrefAddSelect: string,
+    SourceAddSelect: string,
+    TypeAddSelect: string,
+    PlaceholderAddSelect: string,
 */
