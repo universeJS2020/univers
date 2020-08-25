@@ -2,24 +2,6 @@ let page = [];
 
 function univers(options) {
     let ChooseElement;
-    
-    //Add the same class/id/name for every element in the DOM
-    function theSame() {
-        if(options.TheSame === `class`)
-            page.forEach( element => {
-                element.classList.add(`${options.CommonClass}`)
-            })
-        
-        if(options.TheSame === `id`)
-        page.forEach( element => {
-            lement.classList.add(`${options.CommonId}`)
-        })
-        
-        if(options.TheSame === `name`)
-        page.forEach( element => {
-            element.classList.add(`${options.CommonName}`)
-        })
-    }
 
     //Show password
     function showPassword(){
@@ -177,9 +159,6 @@ function univers(options) {
 
     if(options.CreateElements)
         createElements();
-
-    if(options.Same)
-        theSame();
 
     if(options.ShowPassword)
         showPassword();

@@ -18,13 +18,34 @@
 import { univers } from 'univers';
 ```
 
+**Create an element**
+```javascript
+universe({
+    CreateElements: true,
+    ElementType: 'h1',
+    CustomText: 'Welcome!',
+    ClassAddSelect: 'someText',
+    CustomPosition: 'div1',
+});
+```
+
+**Create more elements**
+```javascript
+univers({
+    CreateElements: true,
+    ElementType: 'div div h2 ul li a li a li a',
+    CustomText: 'skip skip BrandName skip skip Home skip Contact skip Help',
+    ClassAddSelect: 'navBar Name skip MenuLinks link1 skip link2 skip link3 skip',
+    CustomPosition: 'body navBar Name navBar MenuLinks link1 MenuLinks link2 MenuLinks link3',
+});
+```
+
 # Commands
 
 **Functions**
 * CreateElements: bool
 * ShowPassword: bool
-* Same: bool
-* ShowPassword: bool
+* MoreClasses: string
 
 **Element/Elements**
 * ElementType: string
@@ -54,3 +75,6 @@ import { univers } from 'univers';
 * LastPosition: bool
 * LastLocation: string
 * CustomPosition: string
+
+**Keywords**
+* skip (to be used if you want to let an element without an attribute)
