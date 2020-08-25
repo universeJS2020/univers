@@ -6,35 +6,40 @@ Examples:
 
 ```javascript
 function test() {
-    
+
 }
 ```
-
-* CreateElement: bool
+**Functions**
 * CreateElements: bool
-* SamePosition: bool
-* LastPosition: bool
+* ShowPassword: bool
 * Same: bool
 * ShowPassword: bool
-* PositionBody: bool
+
+**Element/Elements**
 * ElementType: string
-* Class: string
-* Id: string
-* Name: string
-* Type: string
-* Href: string
-* Source: string
-* Placeholder: string
-* Text: string
+
+**Text**
 * CustomText: string
 * CommonText: string
+
+**Classes**
+* ClassAddSelect: string
 * CommonClass: string
+
+**IDs**
+* IdAddSelect: string
 * CommonId: string
+
+**Names**
+* NameAddSelect: string
 * CommonName: string
+
+**Comands for ShowPassword function**
 * ButtonClass: string
 * InputList: string
+
+**Positions**
+* SamePosition: bool
+* LastPosition: bool
 * LastLocation: string
 * CustomPosition: string
-* ClassAddSelect: string
-* IdAddSelect: string
-* NameAddSelect: string
