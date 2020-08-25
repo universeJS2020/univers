@@ -3,35 +3,36 @@ let page = [];
 function univers(options) {
     
     //DOM creation
-    function createElement() {
+    function createElem() {
         page[page.length] = document.createElement(options.ElementType);
 
         if(options.Class)
-            page[page.length].setAttribute(`class`, `${options.Class}`);
+            page[page.length-1].setAttribute(`class`, `${options.Class}`);
         if(options.Id)
-            page[page.length].setAttribute(`id`, `${options.Id}`);
+            page[page.length-1].setAttribute(`id`, `${options.Id}`);
         if(options.Name)
-            page[page.length].setAttribute(`name`, `${options.Name}`);
+            page[page.length-1].setAttribute(`name`, `${options.Name}`);
         if(options.Type)
-            page[page.length].setAttribute(`type`, `${options.Type}`);
+            page[page.length-1].setAttribute(`type`, `${options.Type}`);
         if(options.Href)
-            page[page.length].setAttribute(`href`, `${options.Href}`);
+            page[page.length-1].setAttribute(`href`, `${options.Href}`);
         if(options.Source)
-            page[page.length].setAttribute(`src`, `${options.Source}`);
+            page[page.length-1].setAttribute(`src`, `${options.Source}`);
         if(options.Placeholder)
-            page[page.length].setAttribute(`placeholder`, `${options.Placeholder}`);
+            page[page.length-1].setAttribute(`placeholder`, `${options.Placeholder}`);
 
-        if(options.Text)
+        if(options.Text) {
             const text = document.createTextNode(`${options.Text}`);
-        else 
+            page[page.length-1].appendChild(text);
+        } else {
             const text = document.createTextNode(``);
-        
-        page[page.length].appendChild(text);
+            page[page.length-1].appendChild(text);
+        }
 
         if(options.PositionBody)
-            document.body.appendChild(page[page.length]);
+            document.body.appendChild(page[page.length-1]);
         else
-            document.querySelector(`.${options.Position}`).appendChild(page[page.length]);
+            document.querySelector(`.${options.Position}`).appendChild(page[page.length-1]);
     }
 
     //Add the same class/id/name for every element in the DOM
@@ -77,63 +78,59 @@ function univers(options) {
         let haveText = [];
 
         //Create elements
-        const elem = options.ElementType(" ");
+        const elem = options.ElementType.split(" ");
         elem.forEach( type => {
             page[page.length] = document.createElement(`${type}`);
-            elements[elements.length] = page[page.length];
+            elements[elements.length] = page[page.length-1];
         })
 
         //Attributes
-            if(options.ClassAddSelect)
+            if(options.ClassAddSelect) {
                 const ClassAddSelect = options.ClassAddSelect.split(" ");
-            if(options.IdAddSelect)
+                for(let i=0;i<elements.length;i++) {
+                    if(ClassAddSelect[i] !== 'skip')
+                        elements[i].classList.add(`${ClassAddSelect[i]}`);
+                }
+            }
+            if(options.IdAddSelect) {
                 const IdAddSelect = options.IdAddSelect.split(" ");
-            if(options.NameAddSelect)
+                for(let i=0;i<elements.length;i++) {
+                    if(IdAddSelect[i] !== 'skip')
+                        elements[i].setAttribute(`id`, `${IdAddSelect[i]}`);
+                }
+            }
+            if(options.NameAddSelect) {
                 const NameAddSelect = options.NameAddSelect.split(" ");
-
-        //Set attributes
-        for(let i=0;i<ClassAddSelect.length;i+=2) {
-            elements[i].setAttribute(`class`, `${elements[i+1]}`);
-        }
-
-        for(let i=0;i<IdAddSelect.length;i+=2) {
-            elements[i].setAttribute(`class`, `${elements[i+1]}`);
-        }
-
-        for(let i=0;i<NameAddSelect.length;i+=2) {
-            elements[i].setAttribute(`class`, `${elements[i+1]}`);
-        }
+                for(let i=0;i<elements.length;i+=2) {
+                    elements[i].setAttribute(`name`, `${NameAddSelect[i+1]}`);
+                }
+            } // href, source, type, placeholder
 
         //Set common attributes
-        elements.forEach( el => {
-            if(options.CommonClass)
-                el.classList.add(`${options.CommonClass}`);
-            if(options.CommonId)
-                el.classList.add(`${options.CommonId}`);
-            if(options.CommonName)
-                el.classList.add(`${options.CommonName}`);
-        });
-
+        if(options.CommonClass || options.CommonId || options.CommonName) {
+            elements.forEach( el => {
+                if(options.CommonClass)
+                    el.classList.add(`${options.CommonClass}`);
+                if(options.CommonId)
+                    el.classList.add(`${options.CommonId}`);
+                if(options.CommonName)
+                    el.classList.add(`${options.CommonName}`);
+            });
+        }
         //Custom text
         if(options.CustomText){
             const CustomText = options.CustomText.split(" ");
-        
-            //Set custom text
-            for(let i=0;i<CustomText.length;i+=2) {
-                const text = document.createTextNode(`${CustomText[i+1]}`);
-                haveText[haveText.length] = CustomText[i];
-                elements[CustomText[i]].appendChild(text);
-            }
 
-            //Update elements text
             for(let i=0;i<elements.length;i++) {
-                for(let j=0;j<haveText.length;j++) {
-                    if(i != haveText[j]) {
-                        const text = document.createTextNode(``);
-                        elements[i].appendChild(text);
-                    }
+                if(CustomText[i] === 'skip') {
+                    const text = document.createTextNode(` `);
+                    elements[i].appendChild(text);
+                } else {
+                    const text = document.createTextNode(`${CustomText[i]}`);
+                    elements[i].appendChild(text);
                 }
             }
+
         } else {
             //Set common text
             const text = document.createTextNode(`${options.CommonText}`)
@@ -152,7 +149,7 @@ function univers(options) {
         } else 
             //SamePosition
             if(options.SamePosition)
-                el.forEach( el => {
+                elements.forEach( el => {
                     document.querySelector(`.${options.LastLocation}`).appendChild(el);
                 });
             //CustomPosition
@@ -165,7 +162,7 @@ function univers(options) {
     }
 
     if(options.CreateElement)
-        createElement();
+        createElem();
 
     if(options.CreateElements)
         createElements();
