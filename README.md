@@ -20,7 +20,7 @@ import { univers } from 'univers';
 
 **Create an element**
 ```javascript
-universe({
+univers({
     CreateElements: true,
     ElementType: 'h1',
     CustomText: 'Welcome!',
@@ -28,6 +28,7 @@ universe({
     CustomPosition: 'div1',
 });
 ```
+![alt text](https://github.com/universeJS2020/universe/blob/master/img/Photo1.png)
 
 **Create more elements**
 ```javascript
@@ -39,7 +40,7 @@ univers({
     CustomPosition: 'body navBar Name navBar MenuLinks link1 MenuLinks link2 MenuLinks link3',
 });
 ```
-
+![alt text](https://github.com/universeJS2020/universe/blob/master/img/Photo2.png)
 # Commands
 
 **Functions**
