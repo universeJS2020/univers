@@ -3,25 +3,6 @@ let page = [];
 function univers(options) {
     let ChooseElement;
 
-    //Show password
-    function showPassword(){
-        const btn = document.querySelector(`.${ButtonClass}`);
-
-        const inputList = options.InputList.split(" ");
-
-        let show = false;
-
-        btn.addEventListener('click', () => {
-            inputList.forEach((input, type) => {
-                if(show === false) {
-                    input.type = 'text';
-                } else {
-                    input.type = 'password';
-                }
-            });
-        });
-    }
-
     //More classes
     function MoreClasses(elements) {
         const MoreClasses = options.MoreClasses.split(" ");
@@ -97,6 +78,14 @@ function univers(options) {
                     }
                 }
             }
+            if(options.ActionForm) {
+                const ActionForm = options.ActionForm.split(" ");
+                elements[ActionForm[0]].setAttribute(`action`, `${ActionForm[1]}`);
+            }
+            if(options.MethodForm) {
+                const MethodForm = options.MethodForm.split(" ");
+                elements[MethodForm[0]].setAttribute(`method`, `${MethodForm[1]}`);
+            }
 
         //Set common attributes
         if(options.CommonClass || options.CommonId || options.CommonName) {
@@ -123,12 +112,6 @@ function univers(options) {
                 }
             }
 
-        } else {
-            //Set common text
-            const text = document.createTextNode(`${options.CommonText}`)
-            elements.forEach( el => {
-                el.appendChild(text);
-            });
         }
 
         //LastPosition
@@ -165,44 +148,3 @@ function univers(options) {
 }
 
 module.exports.univers = univers;
-
-/*
-univers({
-    
-*/
-
-/*
-    CreateElement: bool,
-    CreateElements: bool,
-    SamePosition: bool,
-    LastPosition: bool,
-    Same: bool,
-    ShowPassword: bool,
-    PositionBody: bool,
-    MoreClasses: string,
-    ElementType: string,
-    Class: string,
-    Id: string,
-    Name: string,
-    Type: string,
-    Href: string,
-    Source: string,
-    Placeholder: string,
-    Text: string,
-    CustomText: string,
-    CommonText: string,
-    CommonClass: string,
-    CommonId: string,
-    CommonName: string,
-    ButtonClass: string,
-    InputList: string,
-    LastLocation: string,
-    CustomPosition: string,
-    ClassAddSelect: string,
-    IdAddSelect: string,
-    NameAddSelect: string,
-    HrefAddSelect: string,
-    SourceAddSelect: string,
-    TypeAddSelect: string,
-    PlaceholderAddSelect: string,
-*/

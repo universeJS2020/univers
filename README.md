@@ -61,7 +61,6 @@ univers({
 
 **Functions**
 * CreateElements: bool
-* ShowPassword: bool
 * MoreClasses: string
 
 **Element/Elements**
@@ -69,7 +68,6 @@ univers({
 
 **Text**
 * CustomText: string
-* CommonText: string
 
 **Classes**
 * ClassAddSelect: string
@@ -82,10 +80,6 @@ univers({
 **Names**
 * NameAddSelect: string
 * CommonName: string
-
-**Comands for ShowPassword function**
-* ButtonClass: string
-* InputList: string
 
 **Positions**
 * SamePosition: bool
