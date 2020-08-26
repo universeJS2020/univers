@@ -41,6 +41,22 @@ univers({
 });
 ```
 ![alt text](https://github.com/universeJS2020/universe/blob/master/img/Photo2.png)
+
+**Add more classes to an element**
+```javascript
+univers({
+        CreateElements: true,
+        ElementType: 'div div input input input',
+        CustomText: 'skip skip skip skip skip',
+        ClassAddSelect: 'div1 div2 name password submit',
+        TypeAddSelect: 'skip skip text password submit',
+        PlaceholderAddSelect: 'skip skip Name Password skip',
+        MoreClasses: '0 navBar navigation-bar 1 navInputs nav-inp 4 submitBTN submit-create-account',
+        CustomPosition: 'body div1 div2 div2 div2',
+});
+```
+![alt text](https://github.com/universeJS2020/universe/blob/master/img/Photo3.png)
+
 # Commands
 
 **Functions**
