@@ -10,7 +10,7 @@
 *Yes or no? I think you haven't!*
 *With UNIVERS this is reality! Download UNIVERSE and make your work easier!*
 
-*Please tell UNIVERSE team what would you like too see in the next updates!*
+*Please tell me what would you like too see in the next updates!*
 *Thank you for your time!*
 
 # Help & examples
